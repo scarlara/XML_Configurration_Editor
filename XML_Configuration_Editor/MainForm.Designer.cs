@@ -34,6 +34,7 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbViewEditXML = new System.Windows.Forms.GroupBox();
             this.rtbViewEditXML = new System.Windows.Forms.RichTextBox();
+            this.mofDialog = new System.Windows.Forms.OpenFileDialog();
             this.msMainMenu.SuspendLayout();
             this.gbViewEditXML.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,7 @@
             this.openXMLFileToolStripMenuItem.Name = "openXMLFileToolStripMenuItem";
             this.openXMLFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openXMLFileToolStripMenuItem.Text = "&Open XML File";
+            this.openXMLFileToolStripMenuItem.Click += new System.EventHandler(this.openXMLFileToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -87,6 +89,10 @@
             this.rtbViewEditXML.Size = new System.Drawing.Size(634, 548);
             this.rtbViewEditXML.TabIndex = 0;
             this.rtbViewEditXML.Text = "";
+            // 
+            // mofDialog
+            // 
+            this.mofDialog.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -114,6 +120,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.GroupBox gbViewEditXML;
         private System.Windows.Forms.RichTextBox rtbViewEditXML;
+        private System.Windows.Forms.OpenFileDialog mofDialog;
     }
 }
 
