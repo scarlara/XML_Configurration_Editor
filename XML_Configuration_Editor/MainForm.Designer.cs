@@ -32,7 +32,10 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openXMLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gbViewEditXML = new System.Windows.Forms.GroupBox();
+            this.rtbViewEditXML = new System.Windows.Forms.RichTextBox();
             this.msMainMenu.SuspendLayout();
+            this.gbViewEditXML.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMainMenu
@@ -62,21 +65,42 @@
             // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "&Save";
+            // 
+            // gbViewEditXML
+            // 
+            this.gbViewEditXML.Controls.Add(this.rtbViewEditXML);
+            this.gbViewEditXML.Location = new System.Drawing.Point(12, 69);
+            this.gbViewEditXML.Name = "gbViewEditXML";
+            this.gbViewEditXML.Size = new System.Drawing.Size(643, 570);
+            this.gbViewEditXML.TabIndex = 1;
+            this.gbViewEditXML.TabStop = false;
+            this.gbViewEditXML.Text = "View Edit XML File";
+            // 
+            // rtbViewEditXML
+            // 
+            this.rtbViewEditXML.Location = new System.Drawing.Point(3, 16);
+            this.rtbViewEditXML.Name = "rtbViewEditXML";
+            this.rtbViewEditXML.Size = new System.Drawing.Size(634, 548);
+            this.rtbViewEditXML.TabIndex = 0;
+            this.rtbViewEditXML.Text = "";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 670);
+            this.Controls.Add(this.gbViewEditXML);
             this.Controls.Add(this.msMainMenu);
             this.MainMenuStrip = this.msMainMenu;
             this.Name = "MainForm";
             this.Text = "XML Configuration Editor";
             this.msMainMenu.ResumeLayout(false);
             this.msMainMenu.PerformLayout();
+            this.gbViewEditXML.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,6 +112,8 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openXMLFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.GroupBox gbViewEditXML;
+        private System.Windows.Forms.RichTextBox rtbViewEditXML;
     }
 }
 
