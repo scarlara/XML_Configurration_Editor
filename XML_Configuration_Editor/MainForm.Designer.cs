@@ -65,14 +65,14 @@
             // openXMLFileToolStripMenuItem
             // 
             this.openXMLFileToolStripMenuItem.Name = "openXMLFileToolStripMenuItem";
-            this.openXMLFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openXMLFileToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.openXMLFileToolStripMenuItem.Text = "&Open XML File";
             this.openXMLFileToolStripMenuItem.Click += new System.EventHandler(this.openXMLFileToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -127,6 +127,9 @@
             this.Controls.Add(this.gbViewEditXML);
             this.Controls.Add(this.msMainMenu);
             this.MainMenuStrip = this.msMainMenu;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(696, 765);
+            this.MinimumSize = new System.Drawing.Size(696, 765);
             this.Name = "MainForm";
             this.Text = "XML Configuration Editor";
             this.msMainMenu.ResumeLayout(false);

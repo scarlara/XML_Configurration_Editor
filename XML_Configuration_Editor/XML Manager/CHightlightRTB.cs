@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using NUnit.Framework;
 
 namespace XML_Configuration_Editor
 {
+    [TestFixture]
     class CHightlightRTB
     {
+
+#region Global Variables...
 
         public static Color HC_NODE = Color.Firebrick;
         public static Color HC_STRING = Color.Blue;
@@ -16,13 +20,47 @@ namespace XML_Configuration_Editor
         public static Color HC_COMMENT = Color.GreenYellow;
         public static Color HC_INNERTEXT = Color.Black;
 
-        public CHightlightRTB() 
+#endregion
+
+       
+#region Constructor...
+
+        /// <summary>
+        /// Highlight XML constructor.
+        /// </summary>
+        public CHightlightRTB()
         {
 
         }
 
+#endregion
+
+#region Test Cases...
+        public static IEnumerable TestCases
+        {
+            get
+            {
+                //Passing null rich text box.
+                yield return new TestCaseData(null)
+                    .Throws(typeof(System.NullReferenceException)); 
+                
+                //Passing valid rich text box.
+                yield return new TestCaseData(new RichTextBox());
+
+            }
+        }
 
 
+#endregion
+
+
+#region Public Methods...
+
+        /// <summary>
+        /// Highlight XML method.
+        /// </summary>
+        /// <param name="rtb">Rich text box with XML data to hightlight.</param>
+        [Test, TestCaseSource("TestCases")]
         public static void HighlightRTF(RichTextBox rtb)
         {
             int k = 0;
@@ -137,6 +175,10 @@ namespace XML_Configuration_Editor
 
             }
         }
+
+#endregion
+
+        
 
     }
 }
