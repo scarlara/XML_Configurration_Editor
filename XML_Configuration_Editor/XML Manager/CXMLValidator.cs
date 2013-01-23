@@ -5,6 +5,8 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace XML_Configuration_Editor
 {
@@ -20,6 +22,7 @@ namespace XML_Configuration_Editor
     private string m_sSchemaFileName; 
     private XmlSchemaCollection m_objXmlSchemaCollection;
     private bool m_bIsFailure;
+    private string m_Error;
 
 #endregion
 
@@ -44,7 +47,7 @@ namespace XML_Configuration_Editor
         /// This function will Validate the XML file(.xml) against xml schema(.xsd)
         /// </summary>
         /// <returns></returns>
-        public bool ValidateXMLFile()
+        public bool ValidateXMLFile(RichTextBox rtb, bool validateFile, string xmlData)
         {
             XmlTextReader objXmlTextReader = null;
             XmlValidatingReader objXmlValidatingReader = null;
@@ -53,7 +56,15 @@ namespace XML_Configuration_Editor
             {
                 //creating a text reader for the XML file already picked by the 
                 //overloaded constructor above viz..clsSchemaValidator
-                objXmlTextReader = new XmlTextReader(m_sXMLFileName);
+                if (validateFile)
+                {
+                    objXmlTextReader = new XmlTextReader(m_sXMLFileName);
+                }
+                else 
+                {
+                   
+                    objXmlTextReader = new XmlTextReader(new StringReader(xmlData));
+                }
                 //creating a validating reader for that objXmlTextReader just created
                 objXmlValidatingReader = new XmlValidatingReader(objXmlTextReader);
                 //For validation we are adding the schema collection in 
@@ -86,14 +97,26 @@ namespace XML_Configuration_Editor
                 // close the readers, no matter what.
                 objXmlValidatingReader.Close();
                 objXmlTextReader.Close();
+                //
+                if (m_bIsFailure)
+                {
+                   //Print errors in rich text box.
+                    rtb.AppendText(m_Error);
+                }
             }
         }
 
-
+        /// <summary>
+        /// Validation failed event handler method.
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="args">args</param>
         private void ValidationFailed(object sender, ValidationEventArgs args)
         {
+            //Set m_bIsFailure to true.
             m_bIsFailure = true;
-            MessageBox.Show("Invalid XML File: " + args.Message);
+           // Save errrors in global variable.
+            m_Error += "Invalid XML File: " + args.Message + " \n";
         }
         //This will be called only if an the XML file is not in proper format.
         //Since it is a file like HTML any one can go and change its format from 

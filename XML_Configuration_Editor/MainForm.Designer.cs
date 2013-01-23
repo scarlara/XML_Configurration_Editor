@@ -35,12 +35,16 @@
             this.gbViewEditXML = new System.Windows.Forms.GroupBox();
             this.rtbViewEditXML = new System.Windows.Forms.RichTextBox();
             this.mofDialog = new System.Windows.Forms.OpenFileDialog();
+            this.gbMessages = new System.Windows.Forms.GroupBox();
+            this.rtbError = new System.Windows.Forms.RichTextBox();
             this.msMainMenu.SuspendLayout();
             this.gbViewEditXML.SuspendLayout();
+            this.gbMessages.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMainMenu
             // 
+            this.msMainMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.msMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.msMainMenu.Location = new System.Drawing.Point(0, 0);
@@ -67,15 +71,15 @@
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // gbViewEditXML
             // 
             this.gbViewEditXML.Controls.Add(this.rtbViewEditXML);
-            this.gbViewEditXML.Location = new System.Drawing.Point(12, 69);
+            this.gbViewEditXML.Location = new System.Drawing.Point(12, 40);
             this.gbViewEditXML.Name = "gbViewEditXML";
             this.gbViewEditXML.Size = new System.Drawing.Size(643, 570);
             this.gbViewEditXML.TabIndex = 1;
@@ -94,11 +98,32 @@
             // 
             this.mofDialog.FileName = "openFileDialog1";
             // 
+            // gbMessages
+            // 
+            this.gbMessages.Controls.Add(this.rtbError);
+            this.gbMessages.Location = new System.Drawing.Point(12, 652);
+            this.gbMessages.Name = "gbMessages";
+            this.gbMessages.Size = new System.Drawing.Size(643, 63);
+            this.gbMessages.TabIndex = 2;
+            this.gbMessages.TabStop = false;
+            this.gbMessages.Text = "XML Schema Errors";
+            // 
+            // rtbError
+            // 
+            this.rtbError.ForeColor = System.Drawing.Color.Red;
+            this.rtbError.Location = new System.Drawing.Point(3, 14);
+            this.rtbError.Name = "rtbError";
+            this.rtbError.ReadOnly = true;
+            this.rtbError.Size = new System.Drawing.Size(631, 43);
+            this.rtbError.TabIndex = 0;
+            this.rtbError.Text = "";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 670);
+            this.ClientSize = new System.Drawing.Size(680, 727);
+            this.Controls.Add(this.gbMessages);
             this.Controls.Add(this.gbViewEditXML);
             this.Controls.Add(this.msMainMenu);
             this.MainMenuStrip = this.msMainMenu;
@@ -107,6 +132,7 @@
             this.msMainMenu.ResumeLayout(false);
             this.msMainMenu.PerformLayout();
             this.gbViewEditXML.ResumeLayout(false);
+            this.gbMessages.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +147,8 @@
         private System.Windows.Forms.GroupBox gbViewEditXML;
         private System.Windows.Forms.RichTextBox rtbViewEditXML;
         private System.Windows.Forms.OpenFileDialog mofDialog;
+        private System.Windows.Forms.GroupBox gbMessages;
+        private System.Windows.Forms.RichTextBox rtbError;
     }
 }
 
