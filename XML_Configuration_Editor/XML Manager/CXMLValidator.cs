@@ -163,17 +163,26 @@ namespace XML_Configuration_Editor
         }
         catch (System.NullReferenceException ex) 
         {
-            MessageBox.Show("Exception : " + ex.Message);
+            MessageBox.Show(ex.Message, "Null Reference Exception.",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
             return true;
         }
         catch (System.IO.IOException ex)
         {
-            MessageBox.Show("Exception : " + ex.Message);
+            MessageBox.Show(ex.Message, "IO Exception",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return true;
+        }
+        catch (System.Xml.XmlException ex) 
+        {
+            MessageBox.Show(ex.Message, "XML Exception",
+              MessageBoxButtons.OK, MessageBoxIcon.Error);
             return true;
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Exception : " + ex.Message);
+            MessageBox.Show(ex.Message, "Exception",
+              MessageBoxButtons.OK, MessageBoxIcon.Error);
             return true;
         }
         finally
