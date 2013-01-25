@@ -33,11 +33,12 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using NUnit.Framework;
+using NUnit.Extensions.Forms;
 
 namespace XML_Configuration_Editor
 {
     [TestFixture]
-    public partial class MainForm : Form
+    public partial class MainForm : Form 
     {
 
 #region Global Variables...
@@ -48,6 +49,7 @@ namespace XML_Configuration_Editor
         private string mXMLSchemaFileName;
         //XML file name.
         private string mXMLFileName;
+
 #endregion
 
 
@@ -67,10 +69,14 @@ namespace XML_Configuration_Editor
             mofDialog.FilterIndex = 1;
             mofDialog.RestoreDirectory = true;
             mXMLSchemaFileName = System.IO.Path.GetFullPath("..\\..\\") + "PurchaseOrderSchema.xsd";
+
+
         }
 
 #endregion
-       
+
+
+
 
 #region Private Methods...
 
@@ -83,6 +89,7 @@ namespace XML_Configuration_Editor
         {
             try
             {
+                
                 if (mofDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Clear rtbViewEditXML
@@ -157,6 +164,7 @@ namespace XML_Configuration_Editor
                         StreamWriter sw = new StreamWriter(mXMLFileName);
                         //Write XML data into file.
                         sw.Write(rtbViewEditXML.Text);
+                        sw.Close();
                         //Notify successfully saved.
                         MessageBox.Show("File saved successfully.", "XML File Saved.", 
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
