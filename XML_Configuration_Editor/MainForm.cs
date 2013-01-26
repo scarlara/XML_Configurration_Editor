@@ -20,6 +20,7 @@
 // http://www.codeproject.com/Articles/7718/Using-XML-in-C-in-the-simplest-way
 // http://blogs.msdn.com/b/cobold/archive/2011/01/31/xml-highlight-in-richtextbox.aspx
 // http://www.nunit.org/
+// http://msdn.microsoft.com/en-us/library/ms256129.aspx
 //
 // -----------------------------------------------------------------------------------------------
 
@@ -33,7 +34,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using NUnit.Framework;
-using NUnit.Extensions.Forms;
+
 
 namespace XML_Configuration_Editor
 {
@@ -74,8 +75,6 @@ namespace XML_Configuration_Editor
         }
 
 #endregion
-
-
 
 
 #region Private Methods...

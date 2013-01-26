@@ -1,0 +1,108 @@
+<script type="text/javascript">
+function toggle(id, link) {
+  var e = document.getElementById(id);
+ 
+  if (e.style.display == '') {
+    e.style.display = 'none';
+    link.innerHTML = 'Expand';
+	
+  } else {
+    e.style.display = '';
+    link.innerHTML = 'Collapse';
+
+  }
+	
+}
+ 
+
+</script>
+
+<!DOCTYPE html>
+<html>
+<body style="background-color:silver;">
+<!-- Document Title -->
+<hr><h1 style="background-color:WhiteSmoke;">Configuration And Deployment </h1>
+<h1 style="color:blue">Project 1 XML Configuration Editor</h1>
+
+<!-- Developer -->
+<hr><h2 style="background-color:WhiteSmoke;">Developer </h2>
+<h2 style="color:blue">Oscar Lara - <a href="mailto:scarlara@hotmail.com">scarlara@hotmail.com</a></h2>
+
+<!-- Application Description -->
+<h3 style="background-color:WhiteSmoke;">Application Description:</h3>
+<p>A windows form in c# framework 4.0 has been created. It contains 2 rich text boxes one for view/edit purposes
+<br>and a second one to display "error" messages.
+<br>
+<br>Main functionality for this application is to use "PurchaseOrderSchema.xsd" schema located at the project level
+<br>and validate different xml files, or input via rich text box against this schema. 
+<br>Only valid xml data will be allowed to be saved.
+<br>In order to be able to save, you must first have to open a valid XML file. 
+<br>Different exception handling errors were implemented and displayed via messagebox.
+<br>
+<br>Unit tests were implemented for each method as requested based on NUint. 
+<br>For GUI testing i could not implement NUint forms, but I created an automation script that tests all possible variants of GUI.
+<br>
+<br> Source code XML comments are being saved under ".../bin/Debug(or Release)/XML_Configuration_Editor.XML" file.
+<br>
+<br> "PurchaseOrderSchema.zip" contains original xml files, included just in case the ones included at project level got corrupted/broken.
+</p>
+<h3 style="background-color:WhiteSmoke;color:red">IMPORTANT NOTES:</h3>
+<p>
+<br>If needed add NUnit-2.6.2 dll and NUnitFormsV2.0.0.5alpha4 dll as references in project. (NUnitFormsV2.0.0.5alpha4 namespace was removed)
+<br>
+<br>I included a short descriptive video "WATCHME_FIRST_PLEASE.m4v" that briefly explains project structure and how to run the automation script. 
+<br>Again it is very important that once you run the script and click over the windows form(XML Configuration Editor VS App), do not do anything until the script 
+<br>displays: "That's it..."  "Thanks for watching." on the view/edit rich text box area,  if you click or select any other area in your desktop during script execution.
+<br>keyboard keys will be send to that app. window and we on not want that. During test GUI execution do not click ok on the expected warning error messages.
+<br>the script handle those for you. 
+<br>
+</p>
+<!-- Visual Studio Settings -->
+<ul>
+	<li>
+		<a href="#bottom" onclick="toggle('node1')"> 
+			<h3>Visual Studio Settings</h3>
+		</a>	
+		<ul id="node1" style="display:none">
+			<li>
+			<a href="#bottom" onclick="toggle('node2')">
+				<!-- Debug Mode -->
+				<h4 style="color:blue" >Debug Mode</h4>
+			</a>
+				<ul id="node2" style="display:none">
+					<!-- Debug Includes -->
+					<h4 style="background-color:WhiteSmoke;">Includes</h4>
+					<p>No special configuration needed. </p>
+					<!-- Debug Libraries-->
+					<h4 style="background-color:WhiteSmoke;">Library</h4>
+					<p>NUnit-2.6.2 dll add as project reference.</p>
+					<!-- Debug Linker inputs -->
+					<h4 style="background-color:WhiteSmoke;">Linker Input Additional Dependencies</h4>
+					<p>No special configuration needed. </p>
+				</ul>
+			</li>
+			<li>
+			<a href="#bottom" onclick="toggle('node3')">
+				<!-- Release Mode -->
+				<h4 style="color:blue" >Release Mode</h4>
+			</a>
+				<ul id="node3" style="display:none">
+					<!-- Release Includes-->
+					<h4 style="background-color:WhiteSmoke;">Includes</h4>
+					<p>No special configuration needed.</p>
+					<!-- Release Libraries -->
+					<h4 style="background-color:WhiteSmoke;">Library</h4>
+					<p>NUnit-2.6.2 dll add as project reference.</p>
+					<!-- Release Linker Inputs -->
+					<h4 style="background-color:WhiteSmoke;">Linker Input Additional Dependencies</h4>
+					<p>No special configuration needed.</p>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	
+</ul>
+
+<div id="bottom"></div>
+</body>
+</html>
