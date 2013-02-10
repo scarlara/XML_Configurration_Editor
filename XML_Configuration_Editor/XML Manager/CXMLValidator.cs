@@ -52,12 +52,11 @@ namespace XML_Configuration_Editor
 #region Test cases...
 
        //Specifies path for xml file
-    private const string mtcXMLFileName = @"C:\Oscar\Fanshawe\2nd Semester\Configuration And Deployment\Project_1\XML_Configuration_Editor"+
-                                          @"\XML_Configuration_Editor\PO.xml";
+    private const string mtcXMLFileName = @"..\\..\\PO.xml";//System.IO.Path.GetFullPath("..\\..\\") + @"\PO.xml";
+
 
        //Specifies path for xml schema file.
-    private const string mtcXMLSchemaFileName = @"C:\Oscar\Fanshawe\2nd Semester\Configuration And Deployment\Project_1\XML_Configuration_Editor"+
-                                           @"\XML_Configuration_Editor\PurchaseOrderSchema.xsd";
+    private const string mtcXMLSchemaFileName = @"..\\..\\PurchaseOrderSchema.xsd";
 
        //Represents XML Valid Data.
     private const string tcXMLValidData = "<?xml version=\"1.0\"?><purchaseOrder xmlns=\"http://tempuri.org/po.xsd\" orderDate=\"1999-10-20\"> "+
@@ -163,26 +162,30 @@ namespace XML_Configuration_Editor
         }
         catch (System.NullReferenceException ex) 
         {
-            MessageBox.Show(ex.Message, "Null Reference Exception.",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show(ex.Message, "Null Reference Exception.",
+            //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            m_Error += "Null Reference Exception:" + ex.Message + " \n";
             return true;
         }
         catch (System.IO.IOException ex)
         {
-            MessageBox.Show(ex.Message, "IO Exception",
-               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show(ex.Message, "IO Exception",
+            //   MessageBoxButtons.OK, MessageBoxIcon.Error);
+            m_Error += "IO Exception:" + ex.Message + " \n";
             return true;
         }
         catch (System.Xml.XmlException ex) 
         {
-            MessageBox.Show(ex.Message, "XML Exception",
-              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show(ex.Message, "XML Exception",
+            //  MessageBoxButtons.OK, MessageBoxIcon.Error);
+            m_Error += "XML Exception:" + ex.Message + " \n";
             return true;
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Exception",
-              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show(ex.Message, "Exception",
+            //  MessageBoxButtons.OK, MessageBoxIcon.Error);
+            m_Error += "Exception:" + ex.Message + " \n";
             return true;
         }
         finally
