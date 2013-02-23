@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C777D8D-ACB4-4286-A2ED-724018154367}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConfigAndDeployment_Project_2</RootNamespace>
+    <AssemblyName>ConfigAndDeployment_Project_2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
+  
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+
+      <!-- I started here. .... -->
+ <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>   
+ 
+ 
+ <ItemGroup>
+	<Assemblies Include="..\XML_Configuration_Editor\XML_Configuration_Editor\bin\Release\XML_Configuration_Editor.exe" />
+	<Comments Include="..\XML_Configuration_Editor\XML_Configuration_Editor\bin\Release\XML_Configuration_Editor.XML" />
+	 <References Include="..\XML_Configuration_Editor\XML_Configuration_Editor\bin\Release\*.dll" />
+</ItemGroup>
+
+  <!-- Start point trigers the chain Build is the default target msbuild will run when called without parameters -->
+ <Target Name="Build" DependsOnTargets="MoveZip"> 
+    <Message Text="Project 2 Build Complete"/>  
+ </Target>
+   <!-- Build the source project as release -->
+<Target Name="MyBuild">  
+	<MSBuild Projects="..\XML_Configuration_Editor\XML_Configuration_Editor.sln"  
+		 Targets="Clean;Build"
+		 Properties="Configuration=Release" />  
+	 <Message Text="Compile completed!"/>  
+</Target>
+ 
+   <!-- Runs Uni tests depends on MyBuild -->
+<Target Name="UnitTests" DependsOnTargets="MyBuild">   
+	<NUnit Assemblies="..\XML_Configuration_Editor\XML_Configuration_Editor\bin\Release\XML_Configuration_Editor.exe" 
+	ToolPath="C:\Program Files (x86)\NUnit 2.6.2\bin"
+	Force32Bit="True" 		
+	OutputXmlFile="nunit-results.xml"/>
+	 <Message Text="Unit tests completed!"/>  
+</Target>
+  
+  
+    <!-- Runs documentation depends on Unit Tests -->
+    <Target Name="Documentation"  DependsOnTargets="UnitTests">
+    <MSBuild Projects="..\XML_Configuration_Editor\Documentation\Doc_1.shfbproj"  
+		 Targets="Clean;Build"
+		 Properties="Configuration=Release;Platform=x86" />  
+	 <Message Text="Documentation completed!"/>  
+	</Target>
+	
+	
+	
+	<!-- Copy files to "This Is My Application" folder -->
+	<Target Name="CopyFiles" DependsOnTargets="Documentation">
+	<Exec Command="Copy.bat" />
+	</Target>
+	
+	<!-- Wich files to exclude / include -->
+	  <ItemGroup>  
+    <DefaultExclude Include="**\.svn\**" />  
+    <DefaultExclude Include="**\bin\**" />  
+    <DefaultExclude Include="**\obj\**" />  
+    <DefaultExclude Include="**\Release\**" />  
+    <DefaultExclude Include="**\Debug\**" />  
+    <DefaultExclude Include="**\Test\**" />  
+    <DefaultExclude Include="**\TestResults\**" />  
+    <DefaultExclude Include="**\doc\**" />  
+    <DefaultExclude Include="**\www\**" />  
+    <DefaultExclude Include="**\*.user" />  
+    <DefaultExclude Include="**\*.suo" />  
+    <DefaultExclude Include="**\*.zip" />  
+    <DefaultExclude Include="**\*.txt" />  
+  </ItemGroup> 
+  
+	<ItemGroup>  
+		<ZipFiles Include="*.*" Exclude="@(DefaultExclude)" />  
+	</ItemGroup>
+	
+	  <!-- Zip files after being copied -->
+	<Target Name="Zip" DependsOnTargets="CopyFiles">  
+		<Zip Files="@(ZipFiles)"  
+         ZipFileName="Project_2.zip" />  
+		 <Message Text="Zip instruction completed!"/>  
+  </Target>
+
+  <!-- Move zip file to project folder-->
+  	<Target Name="MoveZip" DependsOnTargets="Zip">	
+		<Move 
+		SourceFiles="Project_2.zip" 
+		DestinationFolder="..\XML_Configuration_Editor\XML_Configuration_Editor\"
+		/>
+	</Target>
+  
+
+</Project>

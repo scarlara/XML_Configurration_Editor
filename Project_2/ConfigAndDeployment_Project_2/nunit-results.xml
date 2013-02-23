@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Oscar\Fanshawe\2nd Semester\Configuration And Deployment\Project_2\Project_2\XML_Configuration_Editor\XML_Configuration_Editor\bin\Release\XML_Configuration_Editor.exe" total="10" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-02-22" time="22:08:28">
+  <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5456" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Oscar\Fanshawe\2nd Semester\Configuration And Deployment\Project_2\Project_2\ConfigAndDeployment_Project_2" machine-name="APPLEBYTE" user="Oscar" user-domain="AppleByte" />
+  <culture-info current-culture="en-CA" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Oscar\Fanshawe\2nd Semester\Configuration And Deployment\Project_2\Project_2\XML_Configuration_Editor\XML_Configuration_Editor\bin\Release\XML_Configuration_Editor.exe" executed="True" result="Success" success="True" time="0.616" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="XML_Configuration_Editor" executed="True" result="Success" success="True" time="0.608" asserts="0">
+        <results>
+          <test-suite type="TestFixture" name="CHightlightRTB" executed="True" result="Success" success="True" time="0.021" asserts="0">
+            <results>
+              <test-suite type="ParameterizedTest" name="HighlightRTF" executed="True" result="Success" success="True" time="0.017" asserts="0">
+                <results>
+                  <test-case name="XML_Configuration_Editor.CHightlightRTB.HighlightRTF(null)" executed="True" result="Success" success="True" time="0.011" asserts="0" />
+                  <test-case name="XML_Configuration_Editor.CHightlightRTB.HighlightRTF(System.Windows.Forms.RichTextBox, Text: )" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="ParameterizedFixture" name="CXMLValidator" executed="True" result="Success" success="True" time="0.359" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;)" executed="True" result="Success" success="True" time="0.358" asserts="0">
+                <results>
+                  <test-suite type="ParameterizedTest" name="ValidateXMLFile" executed="True" result="Success" success="True" time="0.106" asserts="0">
+                    <results>
+                      <test-case name="XML_Configuration_Editor.CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;).ValidateXMLFile(System.Windows.Forms.RichTextBox, Text: ,True,&quot;&quot;)" executed="True" result="Success" success="True" time="0.043" asserts="1" />
+                      <test-case name="XML_Configuration_Editor.CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;).ValidateXMLFile(System.Windows.Forms.RichTextBox, Text: ,False,&quot;&quot;)" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                      <test-case name="XML_Configuration_Editor.CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;).ValidateXMLFile(System.Windows.Forms.RichTextBox, Text: ,False,&quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;&lt;purchaseOrder xmlns=\&quot;http://tempuri.org/po.xsd\&quot; orderDate=\&quot;1999-10-20\&quot;&gt; &lt;shipTo country=\&quot;US\&quot;&gt;&lt;name&gt;Alice Smith&lt;/name&gt;&lt;street&gt;123 Maple Street&lt;/street&gt;&lt;city&gt;Mill Valley&lt;/city&gt;&lt;state&gt;CA&lt;/state&gt;&lt;zip&gt;90952&lt;/zip&gt;&lt;/shipTo&gt;&lt;billTo country=\&quot;US\&quot;&gt;&lt;name&gt;Robert Smith&lt;/name&gt;&lt;street&gt;8 Oak Avenue&lt;/street&gt;&lt;city&gt;Old Town&lt;/city&gt;&lt;state&gt;PA&lt;/state&gt;&lt;zip&gt;95819&lt;/zip&gt;&lt;/billTo&gt;&lt;comment&gt;Hurry, my lawn is going wild!&lt;/comment&gt;&lt;items&gt;&lt;item partNum=\&quot;872-AA\&quot;&gt;&lt;productName&gt;Lawnmower&lt;/productName&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;USPrice&gt;148.95&lt;/USPrice&gt;&lt;comment&gt;Confirm this is electric&lt;/comment&gt;&lt;/item&gt;&lt;item partNum=\&quot;926-AA\&quot;&gt;&lt;productName&gt;Baby Monitor&lt;/productName&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;USPrice&gt;39.98&lt;/USPrice&gt;&lt;shipDate&gt;1999-05-21&lt;/shipDate&gt;&lt;/item&gt;&lt;/items&gt;&lt;/purchaseOrder&gt;&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="XML_Configuration_Editor.CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;).ValidateXMLFile(System.Windows.Forms.RichTextBox, Text: ,False,&quot;&lt;book&gt;1&lt;/book&gt;&lt;price&gt;39.98&lt;/price&gt;&lt;shipDate&gt;1999-05-21&lt;/shipDate&gt;&lt;/item&gt;&lt;/items&gt;&lt;/purchaseOrder&gt;&quot;)" executed="True" result="Success" success="True" time="0.052" asserts="1" />
+                      <test-case name="XML_Configuration_Editor.CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;).ValidateXMLFile(null,True,&quot;&quot;)" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                      <test-case name="XML_Configuration_Editor.CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;).ValidateXMLFile(System.Windows.Forms.RichTextBox, Text: ,null,&quot;&quot;)" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="XML_Configuration_Editor.CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;).ValidateXMLFile(System.Windows.Forms.RichTextBox, Text: ,False,null)" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="XML_Configuration_Editor.CXMLValidator(&quot;..\\..\\PO.xml&quot;,&quot;..\\..\\PurchaseOrderSchema.xsd&quot;).ValidateXMLFile(null,null,null)" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="MainForm" executed="True" result="Inconclusive" success="False" time="0.220" asserts="0" />
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
